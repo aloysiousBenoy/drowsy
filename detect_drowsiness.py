@@ -38,8 +38,8 @@ def eye_aspect_ratio(eye):
  
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
-ap.add_argument("-p", "--shape-predictor", required=True,
-	help="path to facial landmark predictor")
+# ap.add_argument("-p", "--shape-predictor", required=True,
+# 	help="path to facial landmark predictor")
 ap.add_argument("-a", "--alarm", type=str, default="",
 	help="path alarm .WAV file")
 ap.add_argument("-w", "--webcam", type=int, default=0,
@@ -60,9 +60,11 @@ ALARM_ON = False
 
 # initialize dlib's face detector (HOG-based) and then create
 # the facial landmark predictor
+# modified the program. Now the program does not need the location argument for shape_predictor_68_face_landmarks.dat
+# # instead we assume that it is present in the same directory. 
 print("[INFO] loading facial landmark predictor...")
 detector = dlib.get_frontal_face_detector()
-predictor = dlib.shape_predictor(args["shape_predictor"])
+predictor = dlib.shape_predictor("./shape_predictor_68_face_landmarks.dat")  
 
 # grab the indexes of the facial landmarks for the left and
 # right eye, respectively
