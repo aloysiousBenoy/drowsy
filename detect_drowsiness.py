@@ -8,7 +8,7 @@ from imutils.video import VideoStream
 from imutils import face_utils
 from threading import Thread
 import numpy as np
-import playsound
+#import playsound
 import argparse
 import imutils
 import time
@@ -16,8 +16,9 @@ import dlib
 import cv2
 
 def sound_alarm(path):
+	print("Warning! Warning!")
 	# play an alarm sound
-	playsound.playsound(path)
+	#playsound.playsound(path)
 
 def eye_aspect_ratio(eye):
 	# compute the euclidean distances between the two sets of
