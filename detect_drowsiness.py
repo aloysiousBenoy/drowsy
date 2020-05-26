@@ -2,7 +2,7 @@
 from jetcam.csi_camera import CSICamera  # CSI camera interface for jetson sbc, provided by Jetpack.
 
 from scipy.spatial import distance as dist
-from imutils.video import VideoStream
+#from imutils.video import VideoStream
 from imutils import face_utils
 from threading import Thread
 import numpy as np
@@ -49,7 +49,7 @@ args = vars(ap.parse_args())
 # frames the eye must be below the threshold for to set off the
 # alarm
 EYE_AR_THRESH = 0.3
-EYE_AR_CONSEC_FRAMES = 48
+EYE_AR_CONSEC_FRAMES = 5
 
 # initialize the frame counter as well as a boolean used to
 # indicate if the alarm is going off
@@ -78,7 +78,7 @@ print("[INFO] starting video stream thread...")
 
 
 # Creating a new camera object to read images from the CSI camera interface, using the CSICamera constructor. For deocumentation, refer to jetpack docs.
-vs = CSICamera(width=720,height=960)
+vs = CSICamera(width=1920,height=1080)
 time.sleep(1.0)
 
 # loop over frames from the video stream
@@ -158,7 +158,6 @@ while True:
 	# show the frame
 	cv2.imshow("Frame", frame)
 	key = cv2.waitKey(1) & 0xFF
- 
 	# if the `q` key was pressed, break from the loop
 	if key == ord("q"):
 		break
