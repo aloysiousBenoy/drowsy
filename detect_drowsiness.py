@@ -1,8 +1,6 @@
-# USAGE
-# python detect_drowsiness.py --shape-predictor shape_predictor_68_face_landmarks.dat
-# python detect_drowsiness.py --shape-predictor shape_predictor_68_face_landmarks.dat --alarm alarm.wav
+#!/usr/bin/python3  
+from jetcam.csi_camera import CSICamera  # CSI camera interface for jetson sbc, provided by Jetpack.
 
-# import the necessary packages
 from scipy.spatial import distance as dist
 from imutils.video import VideoStream
 from imutils import face_utils
@@ -73,7 +71,14 @@ predictor = dlib.shape_predictor("./shape_predictor_68_face_landmarks.dat")
 
 # start the video stream thread
 print("[INFO] starting video stream thread...")
-vs = VideoStream(src=args["webcam"]).start()
+# The below line is the default camera stream constructor, seems to go well with webcams(usb ones), but does not work with the csi camera on the jetson nano.
+# Leaving this line here for future reference. 
+
+#   vs = VideoStream(src=args["webcam"]).start()
+
+
+# Creating a new camera object to read images from the CSI camera interface, using the CSICamera constructor. For deocumentation, refer to jetpack docs.
+vs = CSICamera(width=720,height=960)
 time.sleep(1.0)
 
 # loop over frames from the video stream
