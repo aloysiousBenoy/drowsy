@@ -78,7 +78,10 @@ print("[INFO] starting video stream thread...")
 
 
 # Creating a new camera object to read images from the CSI camera interface, using the CSICamera constructor. For deocumentation, refer to jetpack docs.
-vs = CSICamera(width=1280,height=720)
+
+
+vs = CSICamera(width=1920,height=1080)
+
 time.sleep(1.0)
 
 # loop over frames from the video stream
@@ -158,7 +161,6 @@ while True:
 	# show the frame
 	cv2.imshow("Frame", frame)
 	key = cv2.waitKey(1) & 0xFF
- 
 	# if the `q` key was pressed, break from the loop
 	if key == ord("q"):
 		break
