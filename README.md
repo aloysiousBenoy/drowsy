@@ -3,7 +3,7 @@ Source code for drowsiness detection system using facial landmark detection and 
 Attempts to port it to be used on the jetson-nano sbc.
 Currently works very well on the Jetson Nano SBC. 
 
-##### Warning : Does not use the gpu acceleration.
+>Note : Does not use the gpu acceleration.
 
 
 
